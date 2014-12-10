@@ -68,6 +68,36 @@ ajax.raw('/foo').then(function(result) {
 });
 ```
 
+Error Handling
+--------------
+
+You can handle errors per each request as follows. Note that the jQuery response object for the error is accessible via `.jqXHR`:
+
+```
+ajax("my/path", {
+  data: data
+}).then(function(response) {
+  return console.log(response.message);
+}, function(error) {
+  return doSomething(error.jqXHR.responseJSON);
+});
+```
+
+Global error handling can also be implemented:
+
+```
+ApplicationRoute = Em.Route.extend({
+  init: function() {
+    this._super();
+    return Em.$(document).ajaxError(function(evt, jqxhr) {
+      return console.log(evt);
+    });
+  }
+});
+
+export default ApplicationRoute;
+```
+
 Simplified Testing
 ------------------
 
