@@ -73,7 +73,7 @@ Error Handling
 
 You can handle errors per each request as follows. Note that the jQuery response object for the error is accessible via `.jqXHR`:
 
-```
+```js
 ajax("my/path", {
   data: data
 }).then(function(response) {
@@ -83,9 +83,9 @@ ajax("my/path", {
 });
 ```
 
-Global error handling can also be implemented:
+Global AJAX error handling can also be implemented using jQuery (does not require this plugin):
 
-```
+```js
 ApplicationRoute = Em.Route.extend({
   init: function() {
     this._super();
